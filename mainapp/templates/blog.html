@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content">
+  <div class="content_resize">
+    <div class="mainbar">
+      {% if article %}
+      <div class="article">
+        <p class="title"><span>{{ article.title }}</span></p>
+        <div class="clr"></div>
+        <p>Posted by <a href="#">{{ article.author }}</a> <span>&nbsp;&bull;&nbsp;
+        <p>{{ article.content | safe }}</p>
+        <p>Tagged: <a href="#">orci</a>, <a href="#">lectus</a>, <a href="#">varius</a>, <a href="#">turpis</a></p>
+        <p><a href="#"><strong>Comments ({{ len_c }})</strong></a> <span>&nbsp;&bull;&nbsp;</span> {{ article.add_time }}
+          <span>&nbsp;&bull;&nbsp;</span> <a href="#"><strong>Edit</strong></a>&nbsp;&bull;&nbsp;
+            <strong>
+                <input type="hidden" value="{{ article.aid }}" id="aid">
+                <input type="image" id="clickBtn" width="20" height="20" src="/s/images/click.jpg" class="send" />
+            </strong><strong style="color: #000">&nbsp;&bull;&nbsp;<span id="click_time">{{ article.aclick }}</span></strong></p>
+      </div>
+
+      <div class="article">
+        <h2><span>{{ len_c }}</span> Responses</h2>
+        <div class="clr"></div>
+           {% for c in comments %}
+        <div class="comment">
+          <a href="#"><img src="/s/images/userpic.gif" width="40" height="40" alt="user" class="userpic" /></a>
+          <p><a href="#">{{ c.uname }}</a> Says:<br />{{ c.cpub }}</p>
+          <p>{{ c.content }}</p>
+        </div>
+          {% endfor %}
+      </div>
+          {% if user %}
+      <div class="article">
+        <h2><span>Leave a</span> Reply</h2>
+        <div class="clr"></div>
+        <form action="/comment/{{ article.aid }}" method="post" id="leavereply">
+          <ol>
+            <li>
+              <label for="name">Name (required)</label>
+              <input id="name" name="name" value="{{ user.username }}" class="text" readonly/>
+            </li>
+            <li>
+              <label for="email">Email Address (required)</label>
+              <input id="email" name="email" value="{{ user.email }}" class="text" readonly />
+            </li>
+            <li>
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" rows="8" cols="50"></textarea>
+            </li>
+            <li>
+              <input type="image" name="imageField" id="imageField" src="/s/images/submit.gif" class="send" />
+              <div class="clr"></div>
+            </li>
+          </ol>
+        </form>
+      </div>
+              {% else %}
+              <div class="article">
+                  <p class="'title">
+                      登录之后可以评论...
+                  </p>
+              </div>
+              {% endif %}
+    {% endif %}
+    </div>
+    <div class="sidebar">
+      {% if not user %}
+      <div class="gadget">
+        登录之后查看更多文章...
+      </div>
+      {% else %}
+      {% if articles %}
+      <div class="gadget">
+        <h2>Blog Menu</h2>
+        <div class="clr"></div>
+        <ul class="sb_menu">
+          {% for article in articles %}
+          <li><a href="/article/{{ article.aid }}">{{ article.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      <div class="gadget">
+        <h2>Wise Words</h2>
+        <div class="clr"></div>
+        <p> <img src="/s/images/test_1.gif" alt="image" width="18" height="17" /> <em>We can let circumstances rule
+            us, or we can take charge and rule our lives from within </em>.<img src="/s/images/test_2.gif" alt="image"
+            width="18" height="17" /></p>
+        <p style="float:right;"><strong>Earl Nightingale</strong></p>
+      </div>
+      {% endif %}
+    </div>
+    <div class="clr"></div>
+  </div>
+</div>
+{% endblock %}

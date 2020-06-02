@@ -1,0 +1,159 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>BLOG</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href="/s/css/style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="/s/js/layui/css/layui.css" />
+
+  <script type="text/javascript" src="/s/js/cufon-yui.js"></script>
+  <script type="text/javascript" src="/s/js/arial.js"></script>
+  <script type="text/javascript" src="/s/js/cuf_run.js"></script>
+  <!-- CuFon ends -->
+</head>
+
+<body style="font: normal 12px/1.8em Arial, Helvetica, sans-serif;">
+  <div class="main">
+    <div class="header">
+      <div class="header_resize">
+        <div class="logo">
+          <h1><a href="index.html">BLOG<span> OH!</span></a><small>BLOG</small></h1>
+        </div>
+        <div class="clr"></div>
+        <div class="menu_nav">
+          <ul>
+            <li class="active"><a href="/user/index">首页</a></li>
+            {% if not user %}
+            <li><a id="loginBtn">登录</a></li>
+            <li class="last"><a id="registerBtn">注册</a></li>
+            {% else %}
+            <li><a href="/user/index">浏览</a></li>
+            <li><a href="#">我的世界</a></li>
+            <li><a href="#">帮助中心</a></li>
+            <li><a href="#">会员服务</a></li>
+            <li><a>{{ user.username }}</a></li>
+            <li class="last"><a href="/user/logout">退了</a></li>
+            {% endif %}
+          </ul>
+          <div class="search">
+            <form id="form" name="form" method="post" action="">
+              <span>
+                <input name="q" type="text" class="keywords" id="textfield" maxlength="50" value="Search..." />
+              </span>
+              <input name="b" type="image" src="/s/images/search.gif" class="button" />
+
+            </form>
+          </div>
+          <!--/search -->
+        </div>
+        <div class="clr"></div>
+      </div>
+    </div>
+    <div class="clr"></div>
+    {% block content %}{% endblock %}
+    <div class="fbg">
+      <div class="fbg_resize">
+        <div class="col c1">
+          <h2><span>Image Gallery</span></h2>
+          <a href="#"><img src="/s/images/gallery_1.jpg" width="58" height="58" alt="pix" /></a> <a href="#">
+            <img src="/s/images/gallery_2.jpg" width="58" height="58" alt="pix" /></a> <a href="#">
+            <img src="/s/images/gallery_3.jpg" width="58" height="58" alt="pix" /></a> <a href="#">
+            <img src="/s/images/gallery_4.jpg" width="58" height="58" alt="pix" /></a> <a href="#">
+            <img src="/s/images/gallery_5.jpg" width="58" height="58" alt="pix" /></a> <a href="#">
+            <img src="/s/images/gallery_6.jpg" width="58" height="58" alt="pix" /></a>
+        </div>
+        <div class="col c2">
+          <h2><span>Lorem Ipsum</span></h2>
+          <p>Lorem ipsum dolor<br />
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna.
+            Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo.
+            Donec mattis, purus nec placerat bibendum, dui pede condimentum odio, ac blandit ante orci ut diam.</p>
+        </div>
+        <div class="col c3">
+          <h2><span>Contact</span></h2>
+          <p>Nullam quam lorem, tristique non vestibulum nec, consectetur in risus. Aliquam a quam vel leo gravida
+            gravida eu porttitor dui. Nulla pharetra, mauris vitae interdum dignissim, justo nunc suscipit ipsum. <a
+              href="#">mail@example.com</a><br />
+            <a href="#">+1 (123) 444-5677</a></p>
+        </div>
+        <div class="clr"></div>
+      </div>
+      <div class="footer">
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div>
+  <div style="display:none">
+    <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
+  </div>
+  <script type="text/javascript" src="/s/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/s/js/layui/layui.js"></script>
+  <script type="text/javascript" src="/s/js/layui/layui.all.js"></script>
+
+  <script type="text/html" id="loginDemo">
+    <div style="padding: 20px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">
+        <div class="layui-form-item" style="margin-bottom: 0">
+            <div class="layui-inline">
+                <label class="layui-form-label">验证账户</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="name" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">验证密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" id="password" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</script>
+  <script type="text/html" id="registerDemo">
+    <div style="padding: 20px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">
+        <div class="layui-form-item" style="margin-bottom: 0">
+            <div class="layui-inline" >
+                <label class="layui-form-label">账户名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="rname" name="name" required class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline" >
+                <label class="layui-form-label">账户密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" id="rpassword" name="password" required autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline" >
+                <label class="layui-form-label">确认密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" id="cpassword" name="cpassword" required autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline" >
+                <label class="layui-form-label">账户邮箱</label>
+                <div class="layui-input-inline">
+                    <input type="email" id="remail" name="email" required autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline" >
+                <label class="layui-form-label">账户手机</label>
+                <div class="layui-input-inline">
+                    <input type="tel" id="rphone" name="phone" required autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<style>
+  .title {
+    color: #000;
+    font-size: 16px;
+  }
+</style>
+  <script type="text/javascript" src="/s/js/verity.js"></script>
+</body>
+
+</html>
